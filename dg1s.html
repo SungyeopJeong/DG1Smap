@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>dg1shs</title>
+    <style>
+        body { margin: 0; }
+        #container {
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+        .slide_box {
+            margin: 0;
+            padding: 0;
+            float: left;
+            width: 70vw;
+            height: 100vh;
+            overflow: hidden;
+            display: inline-block;
+        }
+        .slide_list { position: relative; padding: 0; width: 420vw; height: 100vh; }
+        .slide_content {
+            margin: 0;
+            padding: 0;
+            float: left;
+            width: 70vw;
+            height: 100vh;
+            display: inline-block;
+            position: relative;
+        }
+        .slide_content > img {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70vw;
+            height: auto;
+        }
+        .slide_prev, .slide_next {
+            margin: 0;
+            padding: 0;
+            float: left;
+            width: 15vw;
+            height: 100vh;
+            background-color: black;
+            position: relative;
+        }
+        .slide_prev>img, .slide_next>img {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .slide_content, .slide_prev, .slide_next:hover { cursor: pointer; }
+    </style>
+    <script>
+        var i = 1;
+        function setting(x) {
+            var l = document.querySelector('.slide_list');
+            l.style.transition = "0ms";
+            l.style.transform = "translateX(-" + (70 * x) + "vw)";
+        }
+        function move_prev() {
+            i--;
+            var l = document.querySelector('.slide_list');
+            l.style.transition = "300ms";
+            l.style.transform = "translateX(-" + (70 * i) + "vw)";
+            if (i == 0) setTimeout(setting, 300, i = 4);
+        }
+        function move_next() {
+            i++;
+            var l = document.querySelector('.slide_list');
+            l.style.transition = "300ms";
+            l.style.transform = "translateX(-" + (70 * i) + "vw)";
+            if (i == 5) setTimeout(setting, 300, i = 1);
+        }
+    </script>
+</head>
+<body>
+    <header>
+        
+    </header>
+    <section>
+        <div id="container">
+            <div class="slide_prev">
+                <img src="Prev.png" />
+            </div>
+            <div class="slide_box">
+                <div class="slide_list">
+                    <div class="slide_content">
+                        <img src="4F.png" onclick="window.open('4F.html','_blank')" />
+                    </div>
+                    <div class="slide_content">
+                        <img src="1F.png" onclick="window.open('1F.html','_blank')" />
+                    </div>
+                    <div class="slide_content">
+                        <img src="2F.png" onclick="window.open('2F.html','_blank')" />
+                    </div>
+                    <div class="slide_content">
+                        <img src="3F.png" onclick="window.open('3F.html','_blank')" />
+                    </div>
+                    <div class="slide_content">
+                        <img src="4F.png" onclick="window.open('4F.html','_blank')" />
+                    </div>
+                    <div class="slide_content">
+                        <img src="1F.png" onclick="window.open('1F.html','_blank')" />
+                    </div>
+                </div>
+            </div>
+            <div class="slide_next">
+                <img src="Next.png" />
+            </div>
+        </div>
+        <script> 
+            setting(1);
+            const btn_p = document.querySelector('.slide_prev');
+            const btn_n = document.querySelector('.slide_next');
+            btn_p.addEventListener('click', move_prev);
+            btn_n.addEventListener('click', move_next);
+        </script>
+    </section>
+    <footer>
+
+    </footer>
+</body>
+</html>
